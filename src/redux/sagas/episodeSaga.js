@@ -1,0 +1,29 @@
+import { call, put, takeEvery } from 'redux-saga/effects';
+
+const url = 'https://rickandmortyapi.com/api/episode';
+
+function getApi() {
+    return fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then(res => res.json())
+        .then(refined => refined.results)
+        .catch(error => console.error(error.message))
+}
+
+function* fetchCharacters() {
+    try {
+        const characters = yield call(getApi);
+        yield put({type: 'GET_CHARACTERS_SUCCESS', chatacters: characters})
+    } catch (error) {
+        yield put({ type: 'GET_CHARACTERS_FAILED', message: error.message })
+    }
+}
+
+function* characterSaga() {
+    yield takeEvery('GET_CHARACTERS_REQUESTED', fetchCharacters)
+}
+
+export default characterSaga;
