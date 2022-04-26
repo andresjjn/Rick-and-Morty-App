@@ -1,29 +1,30 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from "redux-saga/effects";
 
-const url = 'https://rickandmortyapi.com/api/episode';
+const url = "https://rickandmortyapi.com/api/episode";
 
 function getApi() {
     return fetch(url, {
-        method: 'GET',
+        method: "GET",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         }
-    }).then(res => res.json())
+    })
+        .then(res => res.json())
         .then(refined => refined.results)
         .catch(error => console.error(error.message))
 }
 
-function* fetchCharacters() {
+function* fetchEpisodes() {
     try {
-        const characters = yield call(getApi);
-        yield put({type: 'GET_CHARACTERS_SUCCESS', chatacters: characters})
+        const episodes = yield call(getApi);
+        yield put({type: "GET_EPISODES_SUCCESS", episodes: episodes})
     } catch (error) {
-        yield put({ type: 'GET_CHARACTERS_FAILED', message: error.message })
+        yield put({ type: "GET_EPISODES_FAILED", message: error.message })
     }
 }
 
-function* characterSaga() {
-    yield takeEvery('GET_CHARACTERS_REQUESTED', fetchCharacters)
+function* episodeSaga() {
+    yield takeEvery("GET_EPISODES_REQUESTED", fetchEpisodes)
 }
 
-export default characterSaga;
+export default episodeSaga;

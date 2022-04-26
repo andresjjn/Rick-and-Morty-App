@@ -1,54 +1,36 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useStore} from "react-redux";
-import { getCharacters } from "../../redux/actions/characters";
+import React  from "react"
+import { useSelector } from "react-redux";
+import "../../assests/styles/characters.scss"
 
 export default function Characters() {
-    const dispatch = useDispatch();
-    const store = useStore();
-    const [characters, setCharacters] = useState([]);
-
-    async function actualCharacters({ page }) {
-        dispatch(getCharacters(page))
-        const actualCharacters = await store.getState()
-        setCharacters(actualCharacters.characters.characters)
-    }
-
-    useEffect(() =>{
-        actualCharacters({ page: 1})
-    // eslint-disable-next-line
-    }, []);
-
+    const characters = useSelector(state => state.characters.characters)
+    const loading = useSelector(state => state.characters.loading)
+    const error = useSelector(state => state.characters.error)
     return (
         <div>
-            {characters.length > 0 && characters.map((character, index) => {
-                return (
-                    <li key={index}>{character.name}</li>
-                )
-            })}
-            <button onClick={() => {
-                actualCharacters({page: 1});
-                console.log(1);
-            }}> 1 </button>
-            <button onClick={() => {
-                actualCharacters({page: 2});
-                console.log(2);
-            }}> 2 </button>
-            <button onClick={() => {
-                console.log(3);
-                actualCharacters({page: 3});
-            }}> 3 </button>
-            <button onClick={() => {
-                console.log(4);
-                actualCharacters({page: 4});
-            }}> 4 </button>
-            <button onClick={() => {
-                console.log(5);
-                actualCharacters({page: 5});
-            }}> 5 </button>
-            <button onClick={() => {
-                console.log(6);
-                actualCharacters({page: 6});
-            }}> 6 </button>
+            <h1> Characters </h1>
+            <p> {loading ? "Loading..." : ""} </p>
+            <p> {error ? `${error}` : ""} </p>
+            <ul className="ul__cards">
+                {characters.length > 0 && characters.map((character, index) => {
+                    return (
+                        <li key={index} className="character-card">
+                            <figure>
+                                <img src={character.image}
+                                    alt="Character"
+                                />
+                                <figcaption>
+                                    <h2>{character.name}</h2>
+                                    <p>{`Location: ${character.location.name}`}</p>
+                                    <p>{`Origin:   ${character.origin.name}`}</p>
+                                    <p>{`Species:  ${character.species}`}</p>
+                                </figcaption>
+                            </figure>
+                        </li>
+                    )
+                })}
+            </ul>
+            <p> {error ? `${error}` : ""} </p>
         </div>
     )
 }

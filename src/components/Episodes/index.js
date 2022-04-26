@@ -1,28 +1,20 @@
-import { useEffect } from "react"
-import { useSelector, useDispatch} from "react-redux";
-import { getEpisodes } from "../../redux/actions/episodes";
+import React  from "react"
+import { useSelector } from "react-redux";
 
-export default function Test() {
-    const dispatch = useDispatch();
-    const characters = useSelector(state => state.characters.characters)
-    const loading = useSelector(state => state.characters.loading)
-    const error = useSelector(state => state.characters.error)
-
-
-    useEffect(() =>{
-        dispatch(getEpisodes())
-    // eslint-disable-next-line
-    }, []);
-
+export default function Episodes() {
+    const episodes = useSelector(state => state.episodes.episodes)
+    const loading = useSelector(state => state.episodes.loading)
+    const error = useSelector(state => state.episodes.error)
     return (
         <div>
-            <h1> {loading === null ? 'Loading...' : ''} </h1>
-            {characters.length > 0 && characters.map((character, index) => {
+            <h1> Episodes </h1>
+            <p> { loading ? "Loading..." : "" } </p>
+            {episodes.length > 0 && episodes.map((episode, index) => {
                 return (
-                    <li key={index}>{character.name}</li>
+                    <li key={index}>{episode.name}</li>
                 )
             })}
-            <p> {error ? `${error}` : ''} </p>
+            <p> {error ? `${error}` : ""} </p>
         </div>
     )
 }
