@@ -138,21 +138,23 @@ $green: rgba(144, 199, 72);
     top: 8px;
 }
 .menu__box {
-    display: block;
+    display: flex;
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 50%;
+    right: -150%;
+    width: 100vw;
     margin: 0;
-    padding: 8vh 0;
+    padding: 12vh 5vw;
     list-style: none;
     background-color: #ECEFF1;
-    box-shadow: 2px 2px 6px $green;
-    transition-duration: .25s;
+    box-shadow: 2px 2px 6px #90c748;
+    transition-duration: 0.25s;
+    align-items: center;
+    justify-content: center;
 }
 .menu__item {
     display: block;
-    padding: 12px 24px;
+    padding: 8px 15px;
     color: #333;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
@@ -161,5 +163,5 @@ $green: rgba(144, 199, 72);
     transition-duration: .25s;
 }
 .menu__item:hover {
-background-color: #CFD8DC;
+    background-color: #CFD8DC;
 }
