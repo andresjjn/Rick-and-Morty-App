@@ -22,7 +22,7 @@ $green: rgba(144, 199, 72);
 
 .portal {
     height: 20rem;
-    z-index: 1;
+    z-index: 2;
 }
 
 .portal-animated {
@@ -94,6 +94,7 @@ $green: rgba(144, 199, 72);
 
 #menu__toggle {
     opacity: 0;
+    z-index: 1;
 }
 #menu__toggle:checked + .menu__btn > span {
     transform: rotate(45deg);
@@ -107,7 +108,7 @@ $green: rgba(144, 199, 72);
     transform: rotate(90deg);
 }
 #menu__toggle:checked ~ .menu__box {
-    left: 0 !important;
+    right: 0 !important;
 }
 .menu__btn {
     position:absolute;
@@ -124,41 +125,40 @@ $green: rgba(144, 199, 72);
     display: block;
     position: absolute;
     width: 100%;
-    height: 2px;
+    height: 4.5px;
     background-color: $green;
     transition-duration: .25s;
 }
 .menu__btn > span::before {
-content: '';
-top: -8px;
+    content: '';
+    top: -8px;
 }
 .menu__btn > span::after {
-content: '';
-top: 8px;
+    content: '';
+    top: 8px;
 }
 .menu__box {
     display: block;
     position: fixed;
     top: 0;
     right: -100%;
-    width: 300px;
-    height: 100%;
+    width: 50%;
     margin: 0;
-    padding: 300px 0;
+    padding: 8vh 0;
     list-style: none;
     background-color: #ECEFF1;
     box-shadow: 2px 2px 6px $green;
     transition-duration: .25s;
 }
 .menu__item {
-display: block;
-padding: 12px 24px;
-color: #333;
-font-family: 'Roboto', sans-serif;
-font-size: 20px;
-font-weight: 600;
-text-decoration: none;
-transition-duration: .25s;
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
 }
 .menu__item:hover {
 background-color: #CFD8DC;
