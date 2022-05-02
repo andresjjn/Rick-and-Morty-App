@@ -11,13 +11,13 @@ export default function Navbar() {
             <div>
                 <input id="menu__toggle" type="checkbox" />
                 <label class="menu__btn" for="menu__toggle">
-                    <span></span>
+                <span></span>
                 </label>
 
                 <ul class="menu__box">
-                    <li><Link className="list-element" to="/characters">Characters</Link></li>
-                    <li><Link className="list-element" to="/episodes">Episodes</Link></li>
-                    <li><Link className="list-element" to="/locations">Locations</Link></li>
+                    <li><Link className="menu__item" to="/characters">Characters</Link></li>
+                    <li><Link className="menu__item" to="/episodes">Episodes</Link></li>
+                    <li><Link className="menu__item" to="/locations">Locations</Link></li>
                 </ul>
             </div>
         </div>
