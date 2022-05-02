@@ -108,7 +108,8 @@ $green: rgba(144, 199, 72);
     transform: rotate(90deg);
 }
 #menu__toggle:checked ~ .menu__box {
-    right: 0 !important;
+    visibility: visible;
+    transition-duration: 0.5s;
 }
 .menu__btn {
     position:absolute;
@@ -139,16 +140,17 @@ $green: rgba(144, 199, 72);
 }
 .menu__box {
     display: flex;
-    position: fixed;
+    position: absolute;
     top: 0;
-    right: -150%;
+    visibility: hidden;
+    right: 0%;
     width: 100vw;
     margin: 0;
     padding: 12vh 5vw;
     list-style: none;
     background-color: #ECEFF1;
     box-shadow: 2px 2px 6px #90c748;
-    transition-duration: 0.25s;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
     align-items: center;
     justify-content: center;
 }
@@ -160,7 +162,6 @@ $green: rgba(144, 199, 72);
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
-    transition-duration: .25s;
 }
 .menu__item:hover {
     background-color: #CFD8DC;
