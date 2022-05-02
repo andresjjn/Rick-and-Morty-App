@@ -1,16 +1,24 @@
-import React  from "react"
-import { useSelector } from "react-redux";
+import React, { useEffect }  from "react"
+import { useSelector, useDispatch } from "react-redux";
+import { getLocations } from "../../redux/actions/locations"
+import Header from "../Header";
+import Loading from "../Loading";
 
 export default function Locations() {
     const locations = useSelector(state => state.locations.locations)
     const loading = useSelector(state => state.locations.loading)
     const error = useSelector(state => state.locations.error)
-    console.log(locations)
+    const dispatch = useDispatch();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { dispatch(getLocations()) }, [])
+
     return (
         <div>
-            <h1> Locations </h1>
-            <p> { loading ? "Loading..." : "" } </p>
-            {locations.length > 0 && locations.map((location, index) => {
+            <Header header="Locations"/>
+            {loading 
+                ? <Loading />
+                : locations.length > 0 && locations.map((location, index) => {
                 return (
                     <li key={index}> {location.name} </li>
                 )

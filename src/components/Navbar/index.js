@@ -8,11 +8,18 @@ export default function Navbar() {
             <Link to="/">
                 <img className="portal portal-animated" alt="Return to main page" src={portal}/>
             </Link>
-            <ul className="navbar">
-                <li><Link className="list-element" to="/characters">Characters</Link></li>
-                <li><Link className="list-element" to="/episodes">Episodes</Link></li>
-                <li><Link className="list-element" to="/locations">Locations</Link></li>
-            </ul>
+            <div>
+                <input id="menu__toggle" type="checkbox" />
+                <label class="menu__btn" for="menu__toggle">
+                    <span></span>
+                </label>
+
+                <ul class="menu__box">
+                    <li><Link className="list-element" to="/characters">Characters</Link></li>
+                    <li><Link className="list-element" to="/episodes">Episodes</Link></li>
+                    <li><Link className="list-element" to="/locations">Locations</Link></li>
+                </ul>
+            </div>
         </div>
     )
 };
