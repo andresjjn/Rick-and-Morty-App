@@ -1,18 +1,24 @@
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-    width: 100vw;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 100vw;
 }
 
 .main-title {
-    font-size: 5rem;
-    display: flex;
-    text-align: center;
+  font-size: 5rem;
+  display: flex;
+  text-align: center;
 }
 
 .main-image {
-   width: 20vw;
+  width: 20vw;
+}
+
+.image-animated {
+  position: relative;
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }

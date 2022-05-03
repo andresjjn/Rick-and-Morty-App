@@ -1,5 +1,5 @@
 import "./assests/styles/App.css";
-import React  from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -10,13 +10,13 @@ import Locations from "./components/Locations";
 function App() {
   return (
     <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="characters" element={<Characters />} />
-          <Route path="episodes" element={<Episodes />} />
-          <Route path="locations" element={<Locations />} />
-        </Routes>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="characters" element={<Characters />} />
+        <Route path="episodes" element={<Episodes />} />
+        <Route path="locations" element={<Locations />} />
+      </Routes>
     </div>
   );
 }

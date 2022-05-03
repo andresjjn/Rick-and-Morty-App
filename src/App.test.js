@@ -1,12 +1,12 @@
-import { render } from '@testing-library/react';
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import App from './App';
+import App from "./App";
 
-test('renders learn react link', () => {
+test("renders learn react link", () => {
   const component = render(
     <MemoryRouter>
-      <App/>;
+      <App />;
     </MemoryRouter>
   );
-  component.getByText("The absolute Rick and Morty Experience")
+  component.getByText("The absolute Rick and Morty Experience");
 });

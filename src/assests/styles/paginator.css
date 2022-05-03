@@ -1,0 +1,20 @@
+.nav__pages {
+  width: 100vw;
+}
+
+.list__pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+li {
+  list-style: none;
+}
+
+.button__pages-element {
+  width: 2vw;
+  height: 3vh;
+  margin: 2vh 0.5vw;
+}
