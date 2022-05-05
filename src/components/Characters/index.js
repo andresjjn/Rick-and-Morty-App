@@ -12,6 +12,7 @@ export default function Characters() {
   const error = useSelector((state) => state.characters.error);
   const pages = useSelector((state) => state.characters.pages);
   const [actualPage, setActualPage] = useState(1);
+  const [pagesArr, setPagesArr] = useState([1, 2, 3, 4, 5]);
 
   const dispatch = useDispatch();
 
@@ -27,27 +28,35 @@ export default function Characters() {
       {loading ? (
         <Loading />
       ) : (
-        <ul className="ul__cards">
-          {characters.length > 0 &&
-            characters.map((character, index) => {
-              return (
-                <li key={index} className="character-card">
-                  <figure>
-                    <img src={character.image} alt="Character" />
-                    <figcaption>
-                      <h2>{character.name}</h2>
-                      <p>{`Location: ${character.location.name}`}</p>
-                      <p>{`Origin:   ${character.origin.name}`}</p>
-                      <p>{`Species:  ${character.species}`}</p>
-                    </figcaption>
-                  </figure>
-                </li>
-              );
-            })}
-        </ul>
+        <>
+          <ul className="ul__cards">
+            {characters.length > 0 &&
+              characters.map((character, index) => {
+                return (
+                  <li key={index} className="character-card">
+                    <figure>
+                      <img src={character.image} alt="Character" />
+                      <figcaption>
+                        <h2>{character.name}</h2>
+                        <p>{`Location: ${character.location.name}`}</p>
+                        <p>{`Origin:   ${character.origin.name}`}</p>
+                        <p>{`Species:  ${character.species}`}</p>
+                      </figcaption>
+                    </figure>
+                  </li>
+                );
+              })}
+          </ul>
+          <Paginator
+            totalPages={pages}
+            setActualPage={setActualPage}
+            pagesArr={pagesArr}
+            setPagesArr={setPagesArr}
+            actualPage= {actualPage}
+          />
+        </>
       )}
       <p> {error ? `${error}` : ""} </p>
-      <Paginator pages={pages} setActualPage={setActualPage} />
     </div>
   );
 }

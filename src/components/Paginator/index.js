@@ -1,26 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../assests/styles/paginator.css";
 
-export default function Paginator({ pages, setActualPage }) {
-  const pagesArr = () => {
-    if (pages < 5) {
-      const arr = [];
-      for (let i = 0; i < pages; i++) {
-        arr.push(i + 1);
-      }
-      return arr;
-    } else {
-      return [1, 2, 3, 4, 5];
-    }
-  };
+export default function Paginator({
+  totalPages,
+  setActualPage,
+  pagesArr,
+  setPagesArr,
+  actualPage,
+}) {
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const pagesController = (page, action) => {
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const button = document.getElementById(`list__element-${actualPage}`)
+      button.style.backgroundColor = "rgba(144, 199, 72, 0.678)";
+    }
+  }, [isLoaded, actualPage]);
+
+  const pagesController = (action, page = 0) => {
     const manager = {
-      next: () => {},
-      prev: () => {},
+      init: () => {
+        const arr = [];
+        for (let i = 0; i < 5; i++) {
+          if (i <= totalPages) arr.push(i + 1);
+        }
+        setPagesArr(arr);
+      },
+      next: () => {
+        const arr = [...pagesArr];
+        if (arr.indexOf(totalPages) >= 0) return;
+        arr.forEach((element, index) => {
+          element + 5 <= totalPages
+            ? (arr[index] = element + 5)
+            : arr.splice(index);
+          console.log(element, index);
+        });
+        setPagesArr(arr);
+      },
+      prev: () => {
+        const arr = [...pagesArr], mayor = arr[0];
+        let counter = 1;
+        // if (mayor === 1) return;
+        for (let i = 4; i <= 0; i--) {
+          console.log(i)
+          arr[i] = mayor - counter;
+          counter += 1
+        }
+        setPagesArr(arr);
+      },
       set: () => {
         setActualPage(page);
       },
+      markPage: () => {},
     };
     return manager[action]();
   };
@@ -29,20 +64,33 @@ export default function Paginator({ pages, setActualPage }) {
     <nav role="navigation" className="nav__pages">
       <ul className="list__pages">
         <li>
-          <button className="button__pages-element"> {"<<"} </button>
+          <button
+            className="button__pages-element"
+            onClick={() => {
+              pagesController("prev");
+            }}
+          >
+            {"<<"}
+          </button>
         </li>
-        {pagesArr().map((pageNumber, index) => (
-          <li key={index}>
+        {pagesArr.map((pageNumber) => (
+          <li key={pageNumber}>
             <button
+              id={`list__element-${pageNumber}`}
               className="button__pages-element"
-              onClick={() => pagesController(pageNumber, "set")}
+              onClick={() => pagesController("set", pageNumber)}
             >
               {pageNumber}
             </button>
           </li>
         ))}
         <li>
-          <button className="button__pages-element">{">>"}</button>
+          <button
+            className="button__pages-element"
+            onClick={() => pagesController("next")}
+          >
+            {">>"}
+          </button>
         </li>
       </ul>
     </nav>
