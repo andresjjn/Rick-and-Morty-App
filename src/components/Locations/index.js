@@ -7,7 +7,6 @@ import Loading from "../Loading";
 export default function Locations() {
   const locations = useSelector((state) => state.locations.locations);
   const loading = useSelector((state) => state.locations.loading);
-  const pages = useSelector((state) => state.locations.pages);
   const error = useSelector((state) => state.locations.error);
   const dispatch = useDispatch();
 
@@ -28,7 +27,6 @@ export default function Locations() {
         })
       )}
       <p> {error ? `${error}` : ""} </p>
-      <h2>{pages}</h2>
     </div>
   );
 }

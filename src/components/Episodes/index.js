@@ -7,7 +7,6 @@ import Loading from "../Loading";
 export default function Episodes() {
   const episodes = useSelector((state) => state.episodes.episodes);
   const loading = useSelector((state) => state.episodes.loading);
-  const pages = useSelector((state) => state.episodes.pages);
   const error = useSelector((state) => state.episodes.error);
   const dispatch = useDispatch();
 
@@ -28,7 +27,6 @@ export default function Episodes() {
         })
       )}
       <p> {error ? `${error}` : ""} </p>
-      <h2>{pages}</h2>
     </div>
   );
 }

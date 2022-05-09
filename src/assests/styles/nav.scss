@@ -97,10 +97,11 @@ $green: rgba(144, 199, 72);
 #menu__toggle:checked ~ .menu__box {
   z-index: 1;
   visibility: visible;
+  animation: nav-animation-out 1s;
 }
 .menu__btn {
   position: absolute;
-  top: 12vh;
+  top: 14vh;
   right: 5vw;
   width: 40px;
   height: 50px;
@@ -131,19 +132,19 @@ $green: rgba(144, 199, 72);
   top: 5vh;
   visibility: hidden;
   right: 0%;
-  width: 70vw;
+  width: 45vw;
   margin: 0;
   padding: 5.5vh 5vw;
   list-style: none;
   background-color: #eceff1;
   box-shadow: 2px 2px 6px #90c748;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   z-index: 1;
 }
 .menu__item {
   display: block;
-  padding: 8px 10px;
+  padding: 8px 30px;
   color: #333;
   font-family: "Roboto", sans-serif;
   font-size: 3rem;
@@ -152,4 +153,28 @@ $green: rgba(144, 199, 72);
 }
 .menu__item:hover {
   background-color: #cfd8dc;
+}
+
+@keyframes nav-animation-out {
+  0% {
+    right: -10%;
+    width: 0%;
+  }
+
+  100% {
+    right: 0%;
+    width:45vw;
+  }
+}
+
+@keyframes nav-animation-in {
+  0% {
+    right: 0%;
+    width: 45vw;
+  }
+
+  100% {
+    right: -10%;
+    width: 0%;
+  }
 }
