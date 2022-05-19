@@ -21,15 +21,15 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="menu__item" to="/episodes">
-              Episodes
-            </Link>
-          </li>
-          <li>
             <Link className="menu__item" to="/locations">
               Locations
             </Link>
           </li>
+          {/* <li>
+            <Link className="menu__item" to="/episodes">
+              Episodes
+            </Link>
+          </li> */}
         </ul>
       </div>
     </div>

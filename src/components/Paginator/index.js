@@ -37,16 +37,14 @@ export default function Paginator({
           element + 5 <= totalPages
             ? (arr[index] = element + 5)
             : arr.splice(index);
-          console.log(element, index);
         });
         setPagesArr(arr);
       },
       prev: () => {
         const arr = [...pagesArr], mayor = arr[0];
         let counter = 1;
-        // if (mayor === 1) return;
-        for (let i = 4; i <= 0; i--) {
-          console.log(i)
+        if (mayor === 1) return;
+        for (let i = 4; i >= 0; i--) {
           arr[i] = mayor - counter;
           counter += 1
         }
