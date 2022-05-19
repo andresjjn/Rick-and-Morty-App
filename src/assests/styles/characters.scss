@@ -20,9 +20,11 @@ $lg: new-breakpoint(min-width 1024px);
 }
 
 .ul__cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr minmax(160px, 1fr);
+  display: flex;
   justify-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 figure {
@@ -79,4 +81,8 @@ figure {
       font-family: "Roboto", sans-serif;
     }
   }
+}
+
+@media only screen and (max-width: 900px) {
+
 }
