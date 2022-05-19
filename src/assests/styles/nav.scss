@@ -132,7 +132,6 @@ $green: rgba(144, 199, 72);
   top: 5vh;
   visibility: hidden;
   right: 0%;
-  width: 45vw;
   margin: 0;
   padding: 5.5vh 5vw;
   list-style: none;
@@ -157,24 +156,24 @@ $green: rgba(144, 199, 72);
 
 @keyframes nav-animation-out {
   0% {
-    right: -10%;
+    right: -1%;
     width: 0%;
   }
 
   100% {
     right: 0%;
-    width:45vw;
+    width:40vw;
   }
 }
 
 @keyframes nav-animation-in {
   0% {
     right: 0%;
-    width: 45vw;
+    width: 40vw;
   }
 
   100% {
-    right: -10%;
+    right: -1%;
     width: 0%;
   }
 }
