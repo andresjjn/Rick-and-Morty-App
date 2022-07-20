@@ -128,7 +128,7 @@ $green: rgba(144, 199, 72);
 }
 .menu__box {
   display: flex;
-  position:absolute;
+  position: absolute;
   top: 5vh;
   visibility: hidden;
   right: 0%;
@@ -166,7 +166,7 @@ $green: rgba(144, 199, 72);
 
 @keyframes nav-animation-in {
   0% {
-    transform: scale(1);;
+    transform: scale(1);
   }
 
   100% {
@@ -187,5 +187,4 @@ $green: rgba(144, 199, 72);
   .menu__item {
     margin: 20px 55px 2px 30px;
   }
-
 }

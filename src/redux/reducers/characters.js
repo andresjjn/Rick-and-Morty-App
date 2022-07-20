@@ -17,7 +17,7 @@ export default function characters(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        characters: action.chatacters,
+        characters: action.characters,
         pages: action.pages,
       };
     case type.GET_CHARACTERS_FAILED:

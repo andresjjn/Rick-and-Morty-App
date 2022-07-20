@@ -2,18 +2,15 @@ import { call, put, takeEvery } from "redux-saga/effects";
 
 const url = "https://rickandmortyapi.com/api/episode";
 
-function getApi() {
-  return fetch(url, {
+async function getApi() {
+  const fetchRes = await fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((res) => res.json())
-    .then((refined) => {
-      return { results: refined.results, pages: refined.info.pages };
-    })
-    .catch((error) => console.error(error.message));
+  });
+  const fetchRes_json = await fetchRes.json();
+  return { results: fetchRes_json.results, pages: fetchRes_json.info.pages };
 }
 
 function* fetchEpisodes() {

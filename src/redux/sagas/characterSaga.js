@@ -1,18 +1,15 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
-function getApi({ page }) {
+async function getApi({ page }) {
   const url = `https://rickandmortyapi.com/api/character?page=${page}`;
-  return fetch(url, {
+  const fetchRes = await fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((res) => res.json())
-    .then((refined) => {
-      return { results: refined.results, pages: refined.info.pages };
-    })
-    .catch((error) => console.error(error.message));
+  });
+  const fetchRes_json = await fetchRes.json();
+  return { results: fetchRes_json.results, pages: fetchRes_json.info.pages };
 }
 
 function* fetchCharacters(action) {
@@ -20,7 +17,7 @@ function* fetchCharacters(action) {
     const characters = yield call(getApi, action.payload);
     yield put({
       type: "GET_CHARACTERS_SUCCESS",
-      chatacters: characters.results,
+      characters: characters.results,
       pages: characters.pages,
     });
   } catch (error) {
